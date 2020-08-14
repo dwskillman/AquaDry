@@ -1109,20 +1109,35 @@
 
 						<div class="lqd-column col-lg-6">
 
-							<h2
-								class="font-size-34 lh-13 mt-0 mb-30"
-								data-split-text="true"
-								data-split-options='{"type":"lines"}'
-								data-text-rotator="true"
-							>
-								Why Choose Aqua Dry?
-								<span class="txt-rotate-keywords">
-									<span class="keyword active">Available 24/7</span>
-									<span class="keyword">Free inspections</span>
-									<span class="keyword">Emergency response</span>
-									<span class="keyword">Certified technicians</span>
-								</span><!-- /.txt-rotate-keywords -->
-							</h2>
+							<div class="ld-fancy-heading">
+								<h2 class="ltr-sp--015 split-text-applied text-rotator-activated"
+									data-fittext="true"
+									data-fittext-options='{"compressor":0.675,"maxFontSize":"46","minFontSize":"30"}'
+									data-split-text="true"
+									data-split-options='{ "type": "lines" }'
+									data-text-rotator="true">
+
+									<span class="ld-fh-txt" style="">
+										<div class="lqd-lines split-unit lqd-unit-animation-done" style="display: block; text-align: start; position: relative;">
+											<span data-text=" Why Choose Aqua Dry? " class="split-inner" style="transform: translateY(0px) translateZ(0px) rotateX(0deg); opacity: 1;">
+												<span class="split-txt"> Why Choose Aqua Dry? </span>
+											</span>
+										</div>
+										<div class="lqd-lines split-unit lqd-unit-animation-done" style="display: block; text-align: start; position: relative;">
+											<span data-text="Available 24/7Free inspectionsEmergency responseCertified technicians" class="split-inner" style="transform: translateY(0px) translateZ(0px) rotateX(0deg); opacity: 1;">
+												<span class="split-txt">
+													<span class="txt-rotate-keywords">
+														<span class="keyword active will-change" style="transform: translateY(-65%) rotateX(95deg); opacity: 1;">Available 24/7</span>
+														<span class="keyword is-next will-change" style="transform: translateY(-65%) rotateX(95deg); opacity: 0;">Free inspections</span>
+														<span class="keyword" style="transform: translateY(0%) rotateX(-1deg); opacity: 0;">Emergency response</span>
+														<span class="keyword" style="transform: translateY(65%) rotateX(-95deg); opacity: 0;">Certified technicians</span>
+													</span>
+												</span>
+											</span>
+										</div>
+									</span>
+								</h2>
+							</div>
 
 							<div class="accordion accordion-md accordion-title-underlined accordion-expander-left accordion-active-color-primary" id="vc_accordion_5c77a7f9d2896" role="tablist">
 								<div class="accordion-item panel  active">
@@ -1623,9 +1638,9 @@
 </div><!-- /#wrap -->
 
 <script src="./assets/vendors/jquery.min.js"></script>
+<script src="./assets/js/google.api.js"></script>
 <script src="./assets/js/theme-vendors.js"></script>
 <script src="./assets/js/theme.min.js"></script>
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBFVpPHKaBN6A3_jQ5WfuBMXJdkONyCaJs" async defer></script>
 <script src="./assets/js/html-map-marker.js"></script>
 <script src="./assets/js/liquidAjaxMailchimp.min.js"></script>
 <script src="./assets/js/main.js"></script>
@@ -1646,95 +1661,104 @@
 <script src="./assets/vendors/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
 
 <script>
-	// Google Maps API //
-	var map;
-	var polyLine;
-	var polyOptions;
-	var rotation = 0;
+	window.addEventListener('DOMContentLoaded', (e) => {
 
-	function initialize() {
+		// Google Maps API //
+		var map;
+		var polyLine;
+		var polyOptions;
+		var rotation = 0;
 
-			var mapOptions = {
-					zoom: 8.8,
-					mapTypeId: google.maps.MapTypeId.ROADMAP,
-					center: new google.maps.LatLng(33.9972785,-111.895439),
-					gestureHandling: 'none',
-					zoomControl: false,
-					disableDefaultUI: true
-			};
+		window.google = window.google || {};
+		google.maps = google.maps || {};
 
-			map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		function initialize() {
 
-			// Map Markers //
-			let prescott = createHTMLMapMarker({
-				latlng: new google.maps.LatLng(34.539619, -112.468634),
-				map: map,
-				html: `<div class="pulsating-circle"></div>`
-			});
+				var mapOptions = {
+						zoom: 8.8,
+						mapTypeId: google.maps.MapTypeId.ROADMAP,
+						center: new google.maps.LatLng(33.9972785,-111.895439),
+						gestureHandling: 'none',
+						zoomControl: false,
+						disableDefaultUI: true
+					}
 
-			let sedona = createHTMLMapMarker({
-				latlng: new google.maps.LatLng(34.868131, -111.761295),
-				map: map,
-				html: `<div class="pulsating-circle"></div>`
-			});
+				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-			let glendale = createHTMLMapMarker({
-				latlng: new google.maps.LatLng(33.538139, -112.189211),
-				map: map,
-				html: `<div class="pulsating-circle"></div>`
-			});
+				// Map Markers //
+				let prescott = createHTMLMapMarker({
+					latlng: new google.maps.LatLng(34.539619, -112.468634),
+					map: map,
+					html: `<div class="pulsating-circle"></div>`
+				});
 
-			let tempe = createHTMLMapMarker({
-				latlng: new google.maps.LatLng(33.426046, -111.942335),
-				map: map,
-				html: `<div class="pulsating-circle"></div>`
-			});
+				let sedona = createHTMLMapMarker({
+					latlng: new google.maps.LatLng(34.868131, -111.761295),
+					map: map,
+					html: `<div class="pulsating-circle"></div>`
+				});
 
-			let peoria = createHTMLMapMarker({
-				latlng: new google.maps.LatLng(33.665893, -112.247643),
-				map: map,
-				html: `<div class="pulsating-circle"></div>`
-			});
+				let glendale = createHTMLMapMarker({
+					latlng: new google.maps.LatLng(33.538139, -112.189211),
+					map: map,
+					html: `<div class="pulsating-circle"></div>`
+				});
 
-			let gilbert = createHTMLMapMarker({
-				latlng: new google.maps.LatLng(33.354084, -111.790411),
-				map: map,
-				html: `<div class="pulsating-circle"></div>`
-			});
+				let tempe = createHTMLMapMarker({
+					latlng: new google.maps.LatLng(33.426046, -111.942335),
+					map: map,
+					html: `<div class="pulsating-circle"></div>`
+				});
 
-			let surprise = createHTMLMapMarker({
-				latlng: new google.maps.LatLng(33.628600, -112.367917),
-				map: map,
-				html: `<div class="pulsating-circle"></div>`
-			});
+				let peoria = createHTMLMapMarker({
+					latlng: new google.maps.LatLng(33.665893, -112.247643),
+					map: map,
+					html: `<div class="pulsating-circle"></div>`
+				});
 
-			let buckeye = createHTMLMapMarker({
-				latlng: new google.maps.LatLng(33.369845, -112.586108),
-				map: map,
-				html: `<div class="pulsating-circle"></div>`
-			});
+				let gilbert = createHTMLMapMarker({
+					latlng: new google.maps.LatLng(33.354084, -111.790411),
+					map: map,
+					html: `<div class="pulsating-circle"></div>`
+				});
 
-			let scottsdale = createHTMLMapMarker({
-				latlng: new google.maps.LatLng(33.672190, -111.868095),
-				map: map,
-				html: `<div class="pulsating-circle"></div>`
-			});
+				let surprise = createHTMLMapMarker({
+					latlng: new google.maps.LatLng(33.628600, -112.367917),
+					map: map,
+					html: `<div class="pulsating-circle"></div>`
+				});
 
-			let campverde = createHTMLMapMarker({
-				latlng: new google.maps.LatLng(34.564920, -111.863311),
-				map: map,
-				html: `<div class="pulsating-circle"></div>`
-			});
+				let buckeye = createHTMLMapMarker({
+					latlng: new google.maps.LatLng(33.369845, -112.586108),
+					map: map,
+					html: `<div class="pulsating-circle"></div>`
+				});
 
-			let blackcanyon = createHTMLMapMarker({
-				latlng: new google.maps.LatLng(34.076975, -112.135529),
-				map: map,
-				html: `<div class="pulsating-circle"></div>`
-			});
+				let scottsdale = createHTMLMapMarker({
+					latlng: new google.maps.LatLng(33.672190, -111.868095),
+					map: map,
+					html: `<div class="pulsating-circle"></div>`
+				});
 
-		}
+				let campverde = createHTMLMapMarker({
+					latlng: new google.maps.LatLng(34.564920, -111.863311),
+					map: map,
+					html: `<div class="pulsating-circle"></div>`
+				});
 
-	initialize();
+				let blackcanyon = createHTMLMapMarker({
+					latlng: new google.maps.LatLng(34.076975, -112.135529),
+					map: map,
+					html: `<div class="pulsating-circle"></div>`
+				});
+
+			}
+
+
+		initialize();
+
+	})
+
 </script>
 
 <!-- ADD-ONS JS FILES -->
